@@ -27,10 +27,8 @@ CREATE TABLE address (
   postal_code VARCHAR(10) DEFAULT NULL,
   phone VARCHAR(20) NOT NULL,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY  (address_id),
-  KEY (city_id),
-  FOREIGN KEY (city_id) REFERENCES city (city_id) ON DELETE RESTRICT ON UPDATE CASCADE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY  (address_id)
+)
 
 --
 -- Table structure for table `category`
@@ -41,7 +39,8 @@ CREATE TABLE category (
   name VARCHAR(25) NOT NULL,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY  (category_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
+
 
 --
 -- Table structure for table `city`
@@ -52,11 +51,8 @@ CREATE TABLE city (
   city VARCHAR(50) NOT NULL,
   country_id SMALLINT UNSIGNED NOT NULL,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY  (city_id),
-  KEY idx_fk_country_id (country_id),
- FOREIGN KEY (country_id) REFERENCES country (country_id) ON DELETE RESTRICT ON UPDATE CASCADE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+  PRIMARY KEY  (city_id)
+)
 --
 -- Table structure for table `country`
 --
@@ -66,7 +62,7 @@ CREATE TABLE country (
   country VARCHAR(50) NOT NULL,
   last_update TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY  (country_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
 
 --
 -- Table structure for table `customer`
